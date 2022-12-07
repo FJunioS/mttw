@@ -1,10 +1,11 @@
 <script setup lang='ts'>
     import axios from 'axios';
     import { onMounted, ref } from 'vue';
+    import { IMovie } from '../interfaces/IMovie';
 
     const API = import.meta.env.VITE_API_KEY;
     const place = { region: 'BR', language: 'pt-BR' };
-    let items = ref([]);
+    let items = ref<IMovie[]>([]);
     onMounted(async () => {
         const response = await axios.get(
             'https://api.themoviedb.org/3/discover/movie',
